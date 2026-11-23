@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
-<meta name="generator" content="project-status/0.4.8">
+<meta name="generator" content="project-status/0.4.9">
 <title>Project Status</title>
 <!-- Icon font: Flywheel-Vision-Icons.woff from @flywheel-io/vision 22.1.2 (npm), inlined as a data: URI -->
 <style>
@@ -1471,6 +1471,14 @@ html.fw-embedded:not(.fw-own-close) .psd-info-head { padding-right: calc(12px + 
 .psd-flow-arrow { display: flex; align-items: center; color: var(--typography-light); flex: 0 0 auto; }
 .psd-pipe-more { display: flex; justify-content: flex-end; margin-top: 8px; }
 .psd-section-head { margin-top: 8px; }
+.psd-flow-why { margin-top: auto; }
+.psd-why { margin-top: 12px; border: 1px solid var(--separations-base); border-radius: 8px; padding: 12px 16px; display: flex; flex-direction: column; gap: 12px; }
+.psd-why-head { display: flex; justify-content: space-between; align-items: center; }
+.psd-why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.psd-why-text { margin: 4px 0 8px; font-size: 13px; color: var(--typography-base); }
+.psd-why-row { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; padding: 3px 0; border-bottom: 1px solid var(--separations-base); }
+.psd-why-row span:first-child { color: var(--typography-muted); }
+.psd-why-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
 
 </style>
 <script src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
@@ -1479,7 +1487,7 @@ html.fw-embedded:not(.fw-own-close) .psd-info-head { padding-right: calc(12px + 
 <body>
 <img id="fw-mark" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0iI2ZmZmZmZiI+PHBhdGggZD0iTTI1LjI3MiAyLjUzOGMtMC4wNDEtMC4xMDUtMC4xMDMtMC4yLTAuMTgxLTAuMjgxcy0wLjE3MS0wLjE0NS0wLjI3My0wLjE4OWMtMC4xMDItMC4wNDQtMC4yMTItMC4wNjgtMC4zMjQtMC4wNjlzLTAuMjIyIDAuMDIwLTAuMzI1IDAuMDYybC0xNi45NzEgNi45MTdjLTAuMTU0IDAuMDYzLTAuMjg3IDAuMTcxLTAuMzgyIDAuMzFzLTAuMTQ3IDAuMzAzLTAuMTUgMC40NzJ2NS4yNjRjMCAwLjExIDAuMDIxIDAuMjE4IDAuMDYxIDAuMzIgMC4wNDAgMC4xMDYgMC4xMDEgMC4yMDIgMC4xNzkgMC4yODRzMC4xNyAwLjE0NyAwLjI3MyAwLjE5M2MwLjEwMyAwLjA0NSAwLjIxMyAwLjA3MCAwLjMyNSAwLjA3MnMwLjIyMy0wLjAxOSAwLjMyNy0wLjA2MGwxNi45NzEtNi45MTdjMC4xNTgtMC4wNjIgMC4yOTUtMC4xNzEgMC4zOTItMC4zMTJzMC4xNDktMC4zMDkgMC4xNTEtMC40ODF2LTUuMjY0Yy0wLjAwNC0wLjExLTAuMDI4LTAuMjE5LTAuMDcyLTAuMzJ6TTIxLjc5NSAxMi4xMDJsLTE0LjU5MyA1Ljg3NmMtMC4xNTggMC4wNjQtMC4yOTMgMC4xNzUtMC4zODkgMC4zMTdzLTAuMTQ2IDAuMzExLTAuMTQ2IDAuNDg0djYuOTE3YzAgMC4xNjkgMC4wNDkgMC4zMzMgMC4xNDEgMC40NzRzMC4yMjMgMC4yNSAwLjM3NiAwLjMxNmw0LjkxNCAyLjExOWMwLjEwNSAwLjA0NCAwLjIxNyAwLjA2NiAwLjMzIDAuMDY2IDAuMTExIDAuMDAxIDAuMjIyLTAuMDIxIDAuMzI1LTAuMDY0czAuMTk3LTAuMTA2IDAuMjc1LTAuMTg2IDAuMTQxLTAuMTc1IDAuMTg0LTAuMjc5YzAuMDQyLTAuMTA0IDAuMDY0LTAuMjE2IDAuMDY0LTAuMzI5di00LjYwMmMwLjAwMS0wLjE3MyAwLjA1My0wLjM0MSAwLjE0OS0wLjQ4NHMwLjIzMi0wLjI1MyAwLjM5LTAuMzE3bDguNjItMy40NGMwLjE1OC0wLjA2NCAwLjI5NC0wLjE3NCAwLjM5LTAuMzE3czAuMTQ4LTAuMzExIDAuMTQ5LTAuNDg0di01LjI0NmMwLTAuMTA5LTAuMDIxLTAuMjE2LTAuMDYxLTAuMzE3LTAuMDM5LTAuMTA5LTAuMDk5LTAuMjA4LTAuMTc3LTAuMjkzcy0wLjE3Mi0wLjE1Mi0wLjI3Ni0wLjE5OWMtMC4xMDQtMC4wNDctMC4yMTctMC4wNzItMC4zMzEtMC4wNzRzLTAuMjI3IDAuMDIwLTAuMzMzIDAuMDY0eiIvPjwvc3ZnPg==" alt="" hidden>
 <div id="root"></div>
-<script>window.PSD_BUILD = {"app": "project-status", "version": "0.4.8 (29bf5f2)", "mode": "prototype", "built": "2026-11-23 20:28 UTC"};</script>
+<script>window.PSD_BUILD = {"app": "project-status", "version": "0.4.9 (b092840)", "mode": "prototype", "built": "2026-11-23 20:58 UTC"};</script>
 <script>/* @flywheel-io/extension 0.14.9 (MIT; npm build bundled to IIFE, includes rxjs 6.6.7 Apache-2.0). Inlined: cdn.flywheel.io does not serve it cross-origin to GitHub Pages. */
 var Flywheel=(()=>{var _n=Object.create;var we=Object.defineProperty;var bn=Object.getOwnPropertyDescriptor;var yn=Object.getOwnPropertyNames;var vn=Object.getPrototypeOf,mn=Object.prototype.hasOwnProperty;var s=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports);var ie=(t,e,r,n)=>{if(e&&typeof e=="object"||typeof e=="function")for(let i of yn(e))!mn.call(t,i)&&i!==r&&we(t,i,{get:()=>e[i],enumerable:!(n=bn(e,i))||n.enumerable});return t},ge=(t,e,r)=>(ie(t,e,"default"),r&&ie(r,e,"default")),On=(t,e,r)=>(r=t!=null?_n(vn(t)):{},ie(e||!t||!t.__esModule?we(r,"default",{value:t,enumerable:!0}):r,t)),wn=t=>ie(we({},"__esModule",{value:!0}),t);var oe=s(Se=>{"use strict";Object.defineProperty(Se,"__esModule",{value:!0});function gn(t){return typeof t=="function"}Se.isFunction=gn});var se=s(je=>{"use strict";Object.defineProperty(je,"__esModule",{value:!0});var Ee=!1;je.config={Promise:void 0,set useDeprecatedSynchronousErrorHandling(t){if(t){var e=new Error;console.warn(`DEPRECATED! RxJS was set to use deprecated synchronous error handling behavior by code at: 
 `+e.stack)}else Ee&&console.log("RxJS: Back to a better error behavior. Thank you. <3");Ee=t},get useDeprecatedSynchronousErrorHandling(){return Ee}}});var ue=s(qe=>{"use strict";Object.defineProperty(qe,"__esModule",{value:!0});function Sn(t){setTimeout(function(){throw t},0)}qe.hostReportError=Sn});var Pe=s(xe=>{"use strict";Object.defineProperty(xe,"__esModule",{value:!0});var En=se(),jn=ue();xe.empty={closed:!0,next:function(t){},error:function(t){if(En.config.useDeprecatedSynchronousErrorHandling)throw t;jn.hostReportError(t)},complete:function(){}}});var Me=s(Ie=>{"use strict";Object.defineProperty(Ie,"__esModule",{value:!0});Ie.isArray=function(){return Array.isArray||function(t){return t&&typeof t.length=="number"}}()});var Ae=s(Te=>{"use strict";Object.defineProperty(Te,"__esModule",{value:!0});function qn(t){return t!==null&&typeof t=="object"}Te.isObject=qn});var Wr=s(Re=>{"use strict";Object.defineProperty(Re,"__esModule",{value:!0});var xn=function(){function t(e){return Error.call(this),this.message=e?e.length+` errors occurred during unsubscription:
@@ -1683,7 +1691,9 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
         info: { study_code: sp.code, indication: sp.indication, tier: sp.tier, criteria: sp.criteria }, // (verify) where tier lives
       };
       const sessions = [], jobs = [], tasks = [];
-      const rules = sp.gears.map(g => ({ _id: id24(r), name: `Run ${g}`, gear_id: id24(r), _gear: g, disabled: sp.ruleDisabled === g, auto_update: false }));
+      const rules = sp.gears.map((g, gi) => ({ _id: id24(r), name: `Run ${g}`, gear_id: id24(r), _gear: g, gear_version: (GEARS[g] && GEARS[g].version) || null, disabled: sp.ruleDisabled === g, auto_update: false,
+        all: gi === 0 ? [{ type: 'file.type', value: 'dicom', regex: false }] : [{ type: 'file.name', value: '\\.nii\\.gz$', regex: true }], any: [], not: [],
+        created: new Date(now - 400 * DAY).toISOString(), modified: new Date(now - (sp.code === 'ONC-2201' && gi === sp.gears.length - 1 ? 45 : 200) * DAY).toISOString(), last_modified_by: 'cm@gne.example' }));
       let taskSeq = 1;
       const readers = READERS.slice(pi % 3, pi % 3 + sp.readers);
       for (let s = 0; s < sp.subjects; s++) {
@@ -1805,8 +1815,9 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
       if (sp.code === 'OPH-1104') access.push({ access_type: 'delete_file', count: 6, first_access: new Date(now - 2 * DAY).toISOString(), last_access: new Date(now - 2 * DAY).toISOString(), origin: { type: 'user', id: people[0] } },
         { access_type: 'replace_file', count: 3, first_access: new Date(now - 4 * DAY).toISOString(), last_access: new Date(now - 4 * DAY).toISOString(), origin: { type: 'user', id: people[0] } });
       if (sp.code === 'OPH-1210') access.push({ access_type: 'add_permission', count: 2, first_access: new Date(now - 1 * DAY).toISOString(), last_access: new Date(now - 1 * DAY).toISOString(), origin: { type: 'user', id: 'admin@gne.example' } });
+      const files = sessions.flatMap(x => [{ session: x._id, name: 'T1.dicom.zip', type: 'dicom', created: x.created }, { session: x._id, name: 'T1.nii.gz', type: 'nifti', created: x.created }]);
       out.projects.push(project);
-      out.byProject[pid] = { project, statistics, sessions, jobs, rules, tasks, access, snapshotAgeMin: 3 + Math.floor(r() * 11), // micro-batch target: every 15 min
+      out.byProject[pid] = { project, statistics, sessions, jobs, rules, tasks, access, files, snapshotAgeMin: 3 + Math.floor(r() * 11), // micro-batch target: every 15 min
         spec: { readsPerSession: sp.readsPerSession, gears: sp.gears } };
     });
     return out;
@@ -2102,7 +2113,7 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
       rules: rules.map(r => ({ name: r.name, gear: r._gear || r.name, disabled: !!r.disabled })) };
   }
 
-  function pipelineFacts(sessions, jobs, tasks, gearsExpected, readsPerSession, rules) {
+  function pipelineFacts(sessions, jobs, tasks, gearsExpected, readsPerSession, rules, files) {
     const latest = new Map();
     for (const j of jobs) { const k = `${j.parents.session}|${j.gear_info.name}`; const p = latest.get(k); if (!p || ts(j.created) > ts(p.created)) latest.set(k, j); }
     const readsBySession = new Map();
@@ -2112,7 +2123,7 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
     const never = gearsExpected.filter(g => !ran.has(g));
     gearsExpected = gearsExpected.filter(g => ran.has(g));
     const coverage = gearsExpected.map(g => ({ gear: g, complete: sessions.filter(s => { const j = latest.get(`${s._id}|${g}`); return j && j.state === 'complete'; }).length }));
-    const st = { uploaded: sessions.length, template: 0, processed: 0, tasked: 0, read: 0, never_ran: never, coverage, flow: ruleFlow(sessions, jobs, latest, rules || []) };
+    const st = { uploaded: sessions.length, template: 0, processed: 0, tasked: 0, read: 0, never_ran: never, coverage, flow: ruleFlow(sessions, jobs, latest, rules || [], files) };
     for (const s of sessions) {
       if (s.satisfies_template === false) continue; st.template++;
       if (!gearsExpected.every(g => { const j = latest.get(`${s._id}|${g}`); return j && j.state === 'complete'; })) continue; st.processed++;
@@ -2123,11 +2134,71 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
     return st;
   }
 
+  // ---- "Why?" for a rule gear: does anything match, and when did it arrive relative to the rule's last change?
+  const COND_LABEL = { 'file.type': 'file type', 'file.name': 'file name', 'file.modality': 'modality', 'file.classification': 'classification', 'file.tags': 'file tags',
+    'container.has-type': 'container has a file of type', 'container.has-classification': 'container has classification', 'container.has-measurement': 'container has measurement' };
+  function condText(c) { return `${COND_LABEL[c.type] || c.type} ${c.regex ? 'matches' : 'is'} ${c.regex ? '/' + c.value + '/' : '"' + c.value + '"'}`; }
+  function ruleText(r) {
+    const parts = [];
+    if (r.all && r.all.length) parts.push(r.all.map(condText).join(' and '));
+    if (r.any && r.any.length) parts.push('any of: ' + r.any.map(condText).join('; '));
+    let t = parts.length ? `Runs on files where ${parts.join(', and ')}` : 'Runs on every file (no conditions)';
+    if (r.not && r.not.length) t += `, except ${r.not.map(condText).join(' or ')}`;
+    return t + '.';
+  }
+  function condMatch(c, f) {
+    const test = v => { if (v == null) return false; const vals = Array.isArray(v) ? v : typeof v === 'object' ? Object.values(v).flat() : [v];
+      return vals.some(x => (c.regex ? (() => { try { return new RegExp(c.value).test(String(x)); } catch (e) { return false; } })() : String(x).toLowerCase() === String(c.value).toLowerCase())); };
+    switch (c.type) {
+      case 'file.type': return test(f.type);
+      case 'file.name': return test(f.name);
+      case 'file.modality': return test(f.modality);
+      case 'file.classification': return test(f.classification);
+      case 'file.tags': return test(f.tags);
+      default: return null; // container-level and other conditions: not evaluated here
+    }
+  }
+  function ruleMatches(r, f) {
+    const ev = arr => (arr || []).map(c => condMatch(c, f));
+    const all = ev(r.all), any = ev(r.any), not = ev(r.not);
+    if ([...all, ...any, ...not].some(v => v === null)) return null;
+    return all.every(Boolean) && (!any.length || any.some(Boolean)) && !not.some(Boolean);
+  }
+  function diagnoseRule(e, c, files, sessions, latest) {
+    const r = e.ruleObjs.find(x => !x.disabled) || e.ruleObjs[0];
+    const out = { rule: r.name, text: ruleText(r), version: e.version || null, auto_update: !!r.auto_update,
+      changed: ts(r.modified) || ts(r.created) || null, changed_by: r.last_modified_by || null, files_known: Array.isArray(files) };
+    const behind = c.failed + c.running + c.none;
+    if (!Array.isArray(files)) { out.verdict = behind ? 'File details were not loaded, so the rule could not be checked against the files.' : null; return out; }
+    const judged = files.map(f => ({ f, m: ruleMatches(r, f) }));
+    const unknown = judged.some(x => x.m === null);
+    const matching = judged.filter(x => x.m).map(x => x.f);
+    const ids = new Set(sessions.map(s => s._id));
+    const cut = out.changed;
+    const before = cut ? matching.filter(f => ts(f.created) && ts(f.created) < cut).length : null;
+    const noJob = new Map();
+    for (const f of matching) if (f.session && ids.has(f.session) && !latest.get(`${f.session}|${e.gear}`)) { const x = noJob.get(f.session) || { session: f.session, files: 0, before: 0 }; x.files++; if (cut && ts(f.created) < cut) x.before++; noJob.set(f.session, x); }
+    const nj = [...noJob.values()];
+    const sessMatch = new Set(matching.map(f => f.session).filter(Boolean)).size;
+    Object.assign(out, { files: files.length, matching: matching.length, matching_sessions: sessMatch, before, after: before == null ? null : matching.length - before,
+      no_job_sessions: nj.length, no_job_before: nj.filter(x => x.before === x.files).length, no_job: nj.slice(0, 50).map(x => { const ss = sessions.find(y => y._id === x.session) || {}; return { id: x.session, subject: ss.subject && ss.subject.code, visit: (ss.info && ss.info.visit) || ss.label }; }), unknown_conditions: unknown });
+    const date = cut ? new Date(cut).toLocaleDateString(undefined, { month: 'short', day: 'numeric' }) : null;
+    if (!behind) out.verdict = null;
+    else if (unknown && !matching.length) out.verdict = 'This rule uses container-level conditions the app cannot check yet; compare them with the files by hand.';
+    else if (!matching.length) out.verdict = `No acquisition files in this project match the rule's conditions (${files.length} files checked). Check the conditions against the files' type and name.`;
+    else if (nj.length && out.no_job_before >= nj.length * 0.8 && cut) out.verdict = `${out.no_job_before} of ${nj.length} sessions without a job only have matching files added before the rule was last changed (${date}). Rules run on new or changed files, not on files already there, so these were never processed. Run the gear on them as a batch.`;
+    else if (nj.length) out.verdict = `${nj.length} sessions have matching files but no job, including files added after the rule changed${date ? ` (${date})` : ''}. Check the gear's permissions and the Jobs Log for this gear.`;
+    else if (c.failed) out.verdict = `Every session with matching files has a job, but the latest run failed on ${c.failed} ${c.failed === 1 ? 'session' : 'sessions'}. Open the failed jobs' logs.`;
+    else if (c.running) out.verdict = `${c.running} jobs are still running or queued.`;
+    else out.verdict = `${c.none} sessions have no matching files, so the rule has nothing to run on there.`;
+    return out;
+  }
+
   /** Rule flow: one node per rule gear, where each session's latest job of that gear stands.
    *  Order is inferred, not declared: median minutes from a session's first job to this gear's first job (approximate). */
-  function ruleFlow(sessions, jobs, latest, rules) {
+  function ruleFlow(sessions, jobs, latest, rules, files) {
     const byGear = new Map();
-    for (const r of rules) { const g = r._gear || r.name; const e = byGear.get(g) || { gear: g, rules: [], disabled: true, missing: !!r._gearMissing, label: r._gearMissing ? r.name : g }; e.rules.push(r.name); if (!r.disabled) e.disabled = false; byGear.set(g, e); }
+    for (const r of rules) { const g = r._gear || r.name; const e = byGear.get(g) || { gear: g, rules: [], ruleObjs: [], disabled: true, missing: !!r._gearMissing, label: r._gearMissing ? r.name : g, version: r.gear_version }; e.rules.push(r.name); e.ruleObjs.push(r); if (!r.disabled) e.disabled = false; byGear.set(g, e); }
     // Order: per session, rank gears by when their latest job was created; a node's order = median rank (approximate run order).
     const ranks = new Map();
     const perSession = new Map();
@@ -2141,7 +2212,8 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
         if (j.state === 'complete') c.complete++; else if (j.state === 'failed' || j.state === 'cancelled') c.failed++; else c.running++; }
       const offs = (ranks.get(e.gear) || []).slice().sort((a, b) => a - b);
       const ran = c.complete + c.failed + c.running;
-      return { gear: e.gear, rules: e.rules, disabled: e.disabled, sessions: ids.size, ...c, order: offs.length ? offs[offs.length >> 1] : null, label: e.label || e.gear, missing_gear: !!e.missing, state: e.disabled ? 'disabled' : ran ? 'enabled' : 'never_ran' };
+      return { gear: e.gear, rules: e.rules, disabled: e.disabled, sessions: ids.size, ...c, order: offs.length ? offs[offs.length >> 1] : null, label: e.label || e.gear, missing_gear: !!e.missing, state: e.disabled ? 'disabled' : ran ? 'enabled' : 'never_ran', version: e.version || null,
+        why: e.disabled ? null : diagnoseRule(e, c, files, sessions, latest) };
     }).sort((a, b) => (a.state === 'disabled') - (b.state === 'disabled') || (a.order == null) - (b.order == null) || (a.order || 0) - (b.order || 0) || a.gear.localeCompare(b.gear));
   }
 
@@ -2155,7 +2227,7 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
       project: { _id: rec.project._id, label: rec.project.label, info: rec.project.info },
       statistics: rec.statistics, // from GET /api/projects/{id} → statistics (verified on r6nvg8, 2026-11-20)
       data: dataFacts(rec.sessions, now, o), activity: rec.access === undefined ? undefined : activityFacts(rec.access, now, o), tasks, compute: computeFacts(rec.jobs, rec.rules, now, o),
-      pipeline: { ...pipelineFacts(rec.sessions, rec.jobs, rec.tasks, gearsExpected, rec.spec.readsPerSession, rec.rules), reads: !!tasks.used },
+      pipeline: { ...pipelineFacts(rec.sessions, rec.jobs, rec.tasks, gearsExpected, rec.spec.readsPerSession, rec.rules, rec.files), reads: !!tasks.used },
     };
   }
 
@@ -2394,15 +2466,27 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
     const acqToSession = new Map(acqs.map(a => [a._id || a.id, (a.parents && a.parents.session) || a.session || null]));
     const sessions = sessionsRes.status === 'fulfilled' ? rows(sessionsRes.value).map(s => normSession(s, o)) : (unavailable.data = `Sessions: ${sessionsRes.reason && sessionsRes.reason.message}`, []);
     const jobs = jobsRes.status === 'fulfilled' ? jobsRes.value.map(j => normJob(j, ctx.gearsById, acqToSession)) : (unavailable.compute = `Jobs: ${jobsRes.reason && jobsRes.reason.message}`, []);
-    const rules = rulesRes.status === 'fulfilled' ? rows(rulesRes.value).map(r => ({ _id: r._id, name: r.name || 'Gear rule', disabled: !!r.disabled,
-      _gear: (ctx.gearsById.get(r.gear_id) || {}).name || `rule:${r._id}`, _gearMissing: !ctx.gearsById.get(r.gear_id) })) : (note(`Gear rules: ${rulesRes.reason && rulesRes.reason.message}`), []);
+    // /api/gears lists the latest version of each gear only: resolve older versions a rule pins (r6nvg8, 2026-11-23).
+    const rawRules = rulesRes.status === 'fulfilled' ? rows(rulesRes.value) : [];
+    ctx.gearFetch = ctx.gearFetch || new Map();
+    await Promise.all([...new Set(rawRules.map(r => r.gear_id).filter(id => id && !ctx.gearsById.has(id)))].map(id => {
+      if (!ctx.gearFetch.has(id)) ctx.gearFetch.set(id, api(`/api/gears/${id}`).then(g => { if (g) ctx.gearsById.set(id, { name: (g.gear && g.gear.name) || g.name, version: (g.gear && g.gear.version) || g.version }); }).catch(() => null));
+      return ctx.gearFetch.get(id); }));
+    const cond = arr => (Array.isArray(arr) ? arr : []).map(c => ({ type: c.type, value: c.value, regex: !!c.regex }));
+    const rules = rulesRes.status === 'fulfilled' ? rawRules.map(r => { const g = ctx.gearsById.get(r.gear_id);
+      return { _id: r._id, name: r.name || 'Gear rule', disabled: !!r.disabled, _gear: (g && g.name) || `rule:${r._id}`, _gearMissing: !g, gear_version: g && g.version,
+        auto_update: !!r.auto_update, any: cond(r.any), all: cond(r.all), not: cond(r.not), created: r.created, modified: r.modified, last_modified_by: r.last_modified_by || null,
+        container: r.container_type || r.container || null }; }) : (note(`Gear rules: ${rulesRes.reason && rulesRes.reason.message}`), []);
+    // Acquisition files, slimmed to what rule matching needs (no file contents, no info).
+    const files = acqs.flatMap(a => (a.files || []).map(f => ({ session: (a.parents && a.parents.session) || a.session || null, name: f.name, type: f.type || null,
+      modality: f.modality || null, classification: f.classification || null, tags: f.tags || [], created: f.created || a.created || null })));
     const tasks = tasksRes.status === 'fulfilled' ? tasksRes.value : (note(`Reader tasks: ${tasksRes.reason && tasksRes.reason.message}`), []);
     if (sessions.length && sessions.every(s => s.satisfies_template === undefined)) note('Sessions: satisfies_template not returned; template completeness shows 100% until the snapshot gear computes it. (verify field)');
     const primary = tasks.filter(t => t.subcategory !== 'adjudicator');
     const tasked = new Set(primary.map(t => t.parents && t.parents.session)).size;
     const rec = { project: { _id: pid, label: project.label, info: { study_code: project.label, indication: (project.info && project.info.indication) || '—',
         tier: (project.info && project.info.tier) || '—', criteria: (project.info && project.info.criteria) || '—', group: project.group } },
-      statistics: stats, sessions, jobs, rules, tasks,
+      statistics: stats, sessions, jobs, rules, tasks, files: acqOk ? files : null,
       access: ctx.accessLog === 'ok' && ctx.accessByProject ? (ctx.accessByProject.get(pid) || []) : null,
       spec: { readsPerSession: tasked ? Math.round(primary.length / tasked) : 0 } };
     if (stats.sessions != null && stats.jobs == null) rec.statistics = { ...stats, jobs: jobs.length, acquisitions: acqOk ? acqs.length : null, acquisition_files: acqFiles };
@@ -2485,7 +2569,7 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
  * Built on the Flywheel Vision Design System React bundle (window.FlywheelVisionDesignSystem_6c883d). Read-only. */
 (function () {
   'use strict';
-  const BUILD = window.PSD_BUILD || { app: 'project-status', version: '0.4.8', mode: 'prototype', built: null };
+  const BUILD = window.PSD_BUILD || { app: 'project-status', version: '0.4.9', mode: 'prototype', built: null };
   const V = window.FlywheelVisionDesignSystem_6c883d;
   const { Button, IconButton, Typography, Tag, Tabs, Tab, TabPanel, Select, SelectItem, Table, PanelLayout, AlertPanel, ContextLayout, ProgressBar, Icon } = V;
   const PSD_LIVE = window.PSD_LIVE;
@@ -2616,7 +2700,8 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
   }
 
   const FLOW_SEG = [['complete', 'Complete', 'var(--green-base)'], ['failed', 'Failed or cancelled', 'var(--red-base)'], ['running', 'Running or queued', 'var(--orange-base)']];
-  function RuleFlow({ flow }) {
+  function RuleFlow({ flow, pid }) {
+    const [open, setOpen] = useState(null);
     if (!flow || !flow.length) return h('div', { className: 'psd-empty' }, 'No gear rules on this project.');
     const stateTag = n => n.state === 'disabled' ? h(Tag, { size: 'small', color: 'orange', title: 'Rule disabled' })
       : n.state === 'never_ran' ? h(Tag, { size: 'small', color: 'red', title: 'Never ran' }) : h(Tag, { size: 'small', color: 'slate', title: 'Rule enabled' });
@@ -2626,12 +2711,44 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
         h('div', { className: 'psd-flow-node' + (n.state === 'disabled' ? ' off' : '') + (n.state === 'never_ran' ? ' bad' : ''),
           title: `${n.gear}\nRules: ${n.rules.join(', ')}\nComplete ${n.complete} · failed ${n.failed} · running ${n.running} · no job ${n.none} (of ${n.sessions} sessions)` + (n.order != null ? `\nUsually step ${n.order + 1} by latest run per session (approximate)` : '') },
           h('div', { className: 'psd-flow-head' }, n.missing_gear ? h('span', { className: 'psd-strong' }, n.label) : h('code', null, n.gear), stateTag(n)),
-          n.missing_gear && h('div', { className: 'psd-flow-sub' }, 'Gear not installed on this site'),
+          n.missing_gear && h('div', { className: 'psd-flow-sub' }, 'Gear version not found on this site'),
           h('div', { className: 'psd-flow-bar', role: 'img', 'aria-label': `${n.complete} of ${n.sessions} sessions complete` },
             FLOW_SEG.map(([k, , col]) => n[k] ? h('span', { key: k, style: { width: `${(n[k] / Math.max(1, n.sessions)) * 100}%`, background: col } }) : null)),
           h('div', { className: 'psd-flow-n' }, h('b', null, fmtNum(n.complete)), ` of ${fmtNum(n.sessions)} complete`),
-          h('div', { className: 'psd-flow-sub' }, [n.failed && `${fmtNum(n.failed)} failed`, n.running && `${fmtNum(n.running)} running`, n.none && `${fmtNum(n.none)} no job`].filter(Boolean).join(' · ') || 'All sessions complete'))))),
+          h('div', { className: 'psd-flow-sub' }, [n.failed && `${fmtNum(n.failed)} failed`, n.running && `${fmtNum(n.running)} running`, n.none && `${fmtNum(n.none)} no job`].filter(Boolean).join(' · ') || 'All sessions complete'),
+          n.why && n.why.verdict && h('div', { className: 'psd-flow-why' }, h(Button, { size: 'small', variant: 'ghost', endIcon: open === n.gear ? 'chevron-up' : 'chevron-down', 'aria-expanded': open === n.gear, onClick: () => setOpen(open === n.gear ? null : n.gear) }, 'Why?')))))),
+      open && h(WhyPanel, { n: flow.find(x => x.gear === open), pid, onClose: () => setOpen(null) }),
       h(Legend, { items: [...FLOW_SEG.map(([, l, c]) => [l, c]), ['No job', 'var(--slate-hover)']] }));
+  }
+
+  function WhyPanel({ n, pid, onClose }) {
+    if (!n || !n.why) return null;
+    const w = n.why;
+    const fmtDate = t => t ? new Date(t).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : '—';
+    const row = (k, v) => h('div', { className: 'psd-why-row' }, h('span', null, k), h('span', null, v));
+    const openSession = sid => window.open(`${(document.referrer && new URL(document.referrer).origin) || ''}/#/projects/${pid}/sessions/${sid}?tab=data`, '_blank', 'noopener');
+    return h('div', { className: 'psd-why' },
+      h('div', { className: 'psd-why-head' }, h(Typography, { variant: 'h5' }, `Why ${n.gear} is behind`), h(IconButton, { icon: 'close', size: 'small', 'aria-label': 'Close', onClick: onClose })),
+      h(AlertPanel, { severity: 'info', icon: 'information-circle', title: 'Likely cause', description: w.verdict }),
+      h('div', { className: 'psd-why-grid' },
+        h('div', null,
+          h(Typography, { variant: 'p4', color: 'light' }, 'The rule'),
+          h('p', { className: 'psd-why-text' }, w.text),
+          row('Rule', w.rule), row('Gear version', `${w.version || '—'}${w.auto_update ? ' (auto-update on)' : ''}`),
+          row('Last changed', `${fmtDate(w.changed)}${w.changed_by ? ` by ${w.changed_by}` : ''}`),
+          w.unknown_conditions && h('p', { className: 'psd-sub' }, 'Some conditions are container-level and were not checked by the app.')),
+        h('div', null,
+          h(Typography, { variant: 'p4', color: 'light' }, 'Files against the rule'),
+          !w.files_known ? h('p', { className: 'psd-sub' }, 'File details were not loaded.') : h('div', null,
+            row('Acquisition files checked', fmtNum(w.files)),
+            row('Match the conditions', `${fmtNum(w.matching)} (in ${fmtNum(w.matching_sessions)} sessions)`),
+            w.before != null && row('Added before the rule last changed', fmtNum(w.before)),
+            w.after != null && row('Added after', fmtNum(w.after)),
+            row('Sessions with matching files but no job', fmtNum(w.no_job_sessions))))),
+      w.no_job && w.no_job.length ? h('div', null,
+        h(Typography, { variant: 'p4', color: 'light' }, `Sessions with matching files but no ${n.gear} job${w.no_job_sessions > w.no_job.length ? ` (first ${w.no_job.length})` : ''}`),
+        h('div', { className: 'psd-why-chips' }, w.no_job.slice(0, 24).map(x => h(Button, { key: x.id, size: 'small', variant: 'secondary', endIcon: 'open', onClick: () => openSession(x.id) }, x.subject ? `${x.subject} · ${x.visit}` : x.id.slice(-6))))) : null,
+      h('p', { className: 'psd-sub' }, 'Matching checks acquisition files only, against file type, name, modality, classification and tags. Flywheel rules run when a file is added or changed; existing files need a batch run.'));
   }
 
   const CHANGE_LABEL = { delete_file: 'File deleted', delete_container: 'Container deleted', delete_analysis: 'Analysis deleted', delete_annotation: 'Annotation deleted',
@@ -2972,7 +3089,7 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
         h(Kpi, { label: 'Queued', value: fmtNum(c.pending_total), sub: c.pending_total ? `p95 wait ${fmtMin(c.queue_p95_min)}` : null, tone: a.compute.queueSlow ? 'warn' : null, src: 'live' }),
         h(Kpi, { label: 'Median queue wait, 7 d', value: fmtMin(c.median_wait_min), src: 'snap' }),
         h(Kpi, { label: 'Compute time, 7 d', value: c.hours ? `${fmtNum(Math.round(c.hours))} h` : '—', sub: 'job run time (verify source)', src: 'snap' })),
-      h(Panel, { title: 'Rule flow', sub: 'Gear rules in the order their latest runs usually happen on a session (approximate); bar = latest job of that gear on each session', wide: true, right: h(SrcMark, { src: 'snap' }) }, h(RuleFlow, { flow: f.pipeline.flow })),
+      h(Panel, { title: 'Rule flow', sub: 'Gear rules in the order their latest runs usually happen on a session (approximate); bar = latest job of that gear on each session', wide: true, right: h(SrcMark, { src: 'snap' }) }, h(RuleFlow, { flow: f.pipeline.flow, pid: f.project._id })),
       h('div', { className: 'psd-grid two' },
         h(Panel, { title: 'Finished jobs per day', sub: 'Last 14 days', right: h(SrcMark, { src: 'snap' }) }, h(DailyJobs, { days: c.daily })),
         h(Panel, { title: 'Queue', sub: 'Pending jobs, longest wait first', right: h(Tag, { color: a.compute.queueSlow ? 'orange' : 'slate', title: fmtNum(c.pending_total) }) },
