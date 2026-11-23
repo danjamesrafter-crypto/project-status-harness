@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
-<meta name="generator" content="project-status/0.4.3">
+<meta name="generator" content="project-status/0.4.4">
 <title>Project Status</title>
 <!-- Icon font: Flywheel-Vision-Icons.woff from @flywheel-io/vision 22.1.2 (npm), inlined as a data: URI -->
 <style>
@@ -1457,6 +1457,19 @@ html.fw-embedded:not(.fw-own-close) .psd-info-head { padding-right: calc(12px + 
 .psd-delta-list li { display: grid; grid-template-columns: 10px minmax(0, 260px) 1fr auto; gap: 10px; align-items: center; }
 .psd-diag { display: flex; flex-direction: column; gap: 8px; }
 .psd-info-table.mono td { font-family: ui-monospace, Menlo, monospace; font-size: 10px; }
+.psd-flow { display: flex; align-items: stretch; gap: 4px; overflow-x: auto; padding-bottom: 4px; }
+.psd-flow-node { flex: 1 0 170px; max-width: 240px; border: 1px solid var(--separations-base); border-radius: 8px; padding: 10px 12px; background: var(--card-background); display: flex; flex-direction: column; gap: 6px; }
+.psd-flow-node.off { border-style: dashed; opacity: .75; }
+.psd-flow-node.bad { border-color: var(--red-base); }
+.psd-flow-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 6px; }
+.psd-flow-head code { font-size: 12px; color: var(--typography-base); word-break: break-word; }
+.psd-flow-bar { display: flex; height: 10px; border-radius: 4px; background: var(--slate-hover); overflow: hidden; }
+.psd-flow-bar span { display: block; height: 100%; }
+.psd-flow-n { font-size: 12px; color: var(--typography-muted); font-variant-numeric: tabular-nums; }
+.psd-flow-n b { font-size: 14px; font-weight: 500; color: var(--typography-base); }
+.psd-flow-sub { font-size: 11px; color: var(--typography-light); }
+.psd-flow-arrow { display: flex; align-items: center; color: var(--typography-light); flex: 0 0 auto; }
+.psd-pipe-more { display: flex; justify-content: flex-end; margin-top: 8px; }
 
 </style>
 <script src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
@@ -1465,7 +1478,7 @@ html.fw-embedded:not(.fw-own-close) .psd-info-head { padding-right: calc(12px + 
 <body>
 <img id="fw-mark" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0iI2ZmZmZmZiI+PHBhdGggZD0iTTI1LjI3MiAyLjUzOGMtMC4wNDEtMC4xMDUtMC4xMDMtMC4yLTAuMTgxLTAuMjgxcy0wLjE3MS0wLjE0NS0wLjI3My0wLjE4OWMtMC4xMDItMC4wNDQtMC4yMTItMC4wNjgtMC4zMjQtMC4wNjlzLTAuMjIyIDAuMDIwLTAuMzI1IDAuMDYybC0xNi45NzEgNi45MTdjLTAuMTU0IDAuMDYzLTAuMjg3IDAuMTcxLTAuMzgyIDAuMzFzLTAuMTQ3IDAuMzAzLTAuMTUgMC40NzJ2NS4yNjRjMCAwLjExIDAuMDIxIDAuMjE4IDAuMDYxIDAuMzIgMC4wNDAgMC4xMDYgMC4xMDEgMC4yMDIgMC4xNzkgMC4yODRzMC4xNyAwLjE0NyAwLjI3MyAwLjE5M2MwLjEwMyAwLjA0NSAwLjIxMyAwLjA3MCAwLjMyNSAwLjA3MnMwLjIyMy0wLjAxOSAwLjMyNy0wLjA2MGwxNi45NzEtNi45MTdjMC4xNTgtMC4wNjIgMC4yOTUtMC4xNzEgMC4zOTItMC4zMTJzMC4xNDktMC4zMDkgMC4xNTEtMC40ODF2LTUuMjY0Yy0wLjAwNC0wLjExLTAuMDI4LTAuMjE5LTAuMDcyLTAuMzJ6TTIxLjc5NSAxMi4xMDJsLTE0LjU5MyA1Ljg3NmMtMC4xNTggMC4wNjQtMC4yOTMgMC4xNzUtMC4zODkgMC4zMTdzLTAuMTQ2IDAuMzExLTAuMTQ2IDAuNDg0djYuOTE3YzAgMC4xNjkgMC4wNDkgMC4zMzMgMC4xNDEgMC40NzRzMC4yMjMgMC4yNSAwLjM3NiAwLjMxNmw0LjkxNCAyLjExOWMwLjEwNSAwLjA0NCAwLjIxNyAwLjA2NiAwLjMzIDAuMDY2IDAuMTExIDAuMDAxIDAuMjIyLTAuMDIxIDAuMzI1LTAuMDY0czAuMTk3LTAuMTA2IDAuMjc1LTAuMTg2IDAuMTQxLTAuMTc1IDAuMTg0LTAuMjc5YzAuMDQyLTAuMTA0IDAuMDY0LTAuMjE2IDAuMDY0LTAuMzI5di00LjYwMmMwLjAwMS0wLjE3MyAwLjA1My0wLjM0MSAwLjE0OS0wLjQ4NHMwLjIzMi0wLjI1MyAwLjM5LTAuMzE3bDguNjItMy40NGMwLjE1OC0wLjA2NCAwLjI5NC0wLjE3NCAwLjM5LTAuMzE3czAuMTQ4LTAuMzExIDAuMTQ5LTAuNDg0di01LjI0NmMwLTAuMTA5LTAuMDIxLTAuMjE2LTAuMDYxLTAuMzE3LTAuMDM5LTAuMTA5LTAuMDk5LTAuMjA4LTAuMTc3LTAuMjkzcy0wLjE3Mi0wLjE1Mi0wLjI3Ni0wLjE5OWMtMC4xMDQtMC4wNDctMC4yMTctMC4wNzItMC4zMzEtMC4wNzRzLTAuMjI3IDAuMDIwLTAuMzMzIDAuMDY0eiIvPjwvc3ZnPg==" alt="" hidden>
 <div id="root"></div>
-<script>window.PSD_BUILD = {"app": "project-status", "version": "0.4.3 (f941e9c)", "mode": "prototype", "built": "2026-11-23 18:19 UTC"};</script>
+<script>window.PSD_BUILD = {"app": "project-status", "version": "0.4.4 (a5debdc)", "mode": "prototype", "built": "2026-11-23 19:50 UTC"};</script>
 <script>/* @flywheel-io/extension 0.14.9 (MIT; npm build bundled to IIFE, includes rxjs 6.6.7 Apache-2.0). Inlined: cdn.flywheel.io does not serve it cross-origin to GitHub Pages. */
 var Flywheel=(()=>{var _n=Object.create;var we=Object.defineProperty;var bn=Object.getOwnPropertyDescriptor;var yn=Object.getOwnPropertyNames;var vn=Object.getPrototypeOf,mn=Object.prototype.hasOwnProperty;var s=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports);var ie=(t,e,r,n)=>{if(e&&typeof e=="object"||typeof e=="function")for(let i of yn(e))!mn.call(t,i)&&i!==r&&we(t,i,{get:()=>e[i],enumerable:!(n=bn(e,i))||n.enumerable});return t},ge=(t,e,r)=>(ie(t,e,"default"),r&&ie(r,e,"default")),On=(t,e,r)=>(r=t!=null?_n(vn(t)):{},ie(e||!t||!t.__esModule?we(r,"default",{value:t,enumerable:!0}):r,t)),wn=t=>ie(we({},"__esModule",{value:!0}),t);var oe=s(Se=>{"use strict";Object.defineProperty(Se,"__esModule",{value:!0});function gn(t){return typeof t=="function"}Se.isFunction=gn});var se=s(je=>{"use strict";Object.defineProperty(je,"__esModule",{value:!0});var Ee=!1;je.config={Promise:void 0,set useDeprecatedSynchronousErrorHandling(t){if(t){var e=new Error;console.warn(`DEPRECATED! RxJS was set to use deprecated synchronous error handling behavior by code at: 
 `+e.stack)}else Ee&&console.log("RxJS: Back to a better error behavior. Thank you. <3");Ee=t},get useDeprecatedSynchronousErrorHandling(){return Ee}}});var ue=s(qe=>{"use strict";Object.defineProperty(qe,"__esModule",{value:!0});function Sn(t){setTimeout(function(){throw t},0)}qe.hostReportError=Sn});var Pe=s(xe=>{"use strict";Object.defineProperty(xe,"__esModule",{value:!0});var En=se(),jn=ue();xe.empty={closed:!0,next:function(t){},error:function(t){if(En.config.useDeprecatedSynchronousErrorHandling)throw t;jn.hostReportError(t)},complete:function(){}}});var Me=s(Ie=>{"use strict";Object.defineProperty(Ie,"__esModule",{value:!0});Ie.isArray=function(){return Array.isArray||function(t){return t&&typeof t.length=="number"}}()});var Ae=s(Te=>{"use strict";Object.defineProperty(Te,"__esModule",{value:!0});function qn(t){return t!==null&&typeof t=="object"}Te.isObject=qn});var Wr=s(Re=>{"use strict";Object.defineProperty(Re,"__esModule",{value:!0});var xn=function(){function t(e){return Error.call(this),this.message=e?e.length+` errors occurred during unsubscription:
@@ -1848,7 +1861,9 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
         age: [{ bucket: '0–7 d', n: 1180 }, { bucket: '8–14 d', n: 214 }, { bucket: '15–30 d', n: 31 }, { bucket: '> 30 d', n: 6 }], adj_open: 85, adj_blocked: 61 },
       compute: { jobs_window: jobsWindow, finished, failed, running: 64, pending, pending_total: 1840, queue_p95_min: 96, queue_max_min: 212, median_wait_min: 6.5,
         hours: 9850, gears, daily, unresolved, unresolved_total: 3412, rules: gears.map(g => ({ name: `Run ${g.gear}`, gear: g.gear, disabled: false })) },
-      pipeline: { uploaded: sessions, template: templateOk, processed: 149920, tasked: 141300, read: 139880, reads: true },
+      pipeline: { uploaded: sessions, template: templateOk, processed: 149920, tasked: 141300, read: 139880, reads: true,
+        flow: [['dicom-mr-classifier', 161200, 610, 220, 0, 2], ['dcm2niix', 158900, 1480, 300, 4, 9], ['totalsegmentator', 151300, 5200, 1640, 31, 48], ['recist-pipeline', 149920, 2780, 1250, 52, 95], ['mriqc', 0, 0, 0, 0, null, 'disabled']]
+          .map(([gear, complete, failed, running, x, order, st]) => ({ gear, rules: [`Run ${gear}`], disabled: st === 'disabled', sessions, complete, failed, running, none: sessions - complete - failed - running, order_min: order, state: st || 'enabled' })) },
     };
   }
 
@@ -2036,7 +2051,7 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
       rules: rules.map(r => ({ name: r.name, gear: r._gear || r.name, disabled: !!r.disabled })) };
   }
 
-  function pipelineFacts(sessions, jobs, tasks, gearsExpected, readsPerSession) {
+  function pipelineFacts(sessions, jobs, tasks, gearsExpected, readsPerSession, rules) {
     const latest = new Map();
     for (const j of jobs) { const k = `${j.parents.session}|${j.gear_info.name}`; const p = latest.get(k); if (!p || ts(j.created) > ts(p.created)) latest.set(k, j); }
     const readsBySession = new Map();
@@ -2046,7 +2061,7 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
     const never = gearsExpected.filter(g => !ran.has(g));
     gearsExpected = gearsExpected.filter(g => ran.has(g));
     const coverage = gearsExpected.map(g => ({ gear: g, complete: sessions.filter(s => { const j = latest.get(`${s._id}|${g}`); return j && j.state === 'complete'; }).length }));
-    const st = { uploaded: sessions.length, template: 0, processed: 0, tasked: 0, read: 0, never_ran: never, coverage };
+    const st = { uploaded: sessions.length, template: 0, processed: 0, tasked: 0, read: 0, never_ran: never, coverage, flow: ruleFlow(sessions, jobs, latest, rules || []) };
     for (const s of sessions) {
       if (s.satisfies_template === false) continue; st.template++;
       if (!gearsExpected.every(g => { const j = latest.get(`${s._id}|${g}`); return j && j.state === 'complete'; })) continue; st.processed++;
@@ -2055,6 +2070,28 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
       if (r.done >= Math.max(readsPerSession, r.n)) st.read++;
     }
     return st;
+  }
+
+  /** Rule flow: one node per rule gear, where each session's latest job of that gear stands.
+   *  Order is inferred, not declared: median minutes from a session's first job to this gear's first job (approximate). */
+  function ruleFlow(sessions, jobs, latest, rules) {
+    const byGear = new Map();
+    for (const r of rules) { const g = r._gear || r.name; const e = byGear.get(g) || { gear: g, rules: [], disabled: true }; e.rules.push(r.name); if (!r.disabled) e.disabled = false; byGear.set(g, e); }
+    const first = new Map(), firstGear = new Map();
+    for (const j of jobs) { const sid = j.parents.session; if (!sid) continue; const t = ts(j.created);
+      if (!(first.get(sid) <= t)) first.set(sid, t);
+      const k = `${sid}|${j.gear_info.name}`; if (!(firstGear.get(k) <= t)) firstGear.set(k, t); }
+    const ids = new Set(sessions.map(x => x._id));
+    return [...byGear.values()].map(e => {
+      const c = { complete: 0, failed: 0, running: 0, none: 0 }, offs = [];
+      for (const sid of ids) { const j = latest.get(`${sid}|${e.gear}`);
+        if (!j) { c.none++; continue; }
+        if (j.state === 'complete') c.complete++; else if (j.state === 'failed' || j.state === 'cancelled') c.failed++; else c.running++;
+        const f = firstGear.get(`${sid}|${e.gear}`); if (f != null) offs.push((f - first.get(sid)) / MIN); }
+      offs.sort((a, b) => a - b);
+      const ran = c.complete + c.failed + c.running;
+      return { gear: e.gear, rules: e.rules, disabled: e.disabled, sessions: ids.size, ...c, order_min: offs.length ? offs[offs.length >> 1] : null, state: e.disabled ? 'disabled' : ran ? 'enabled' : 'never_ran' };
+    }).sort((a, b) => (a.state === 'disabled') - (b.state === 'disabled') || (a.order_min == null) - (b.order_min == null) || (a.order_min || 0) - (b.order_min || 0) || a.gear.localeCompare(b.gear));
   }
 
   /** GEAR SIDE: raw records → facts document (what project-status.summary.json would hold). */
@@ -2067,7 +2104,7 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
       project: { _id: rec.project._id, label: rec.project.label, info: rec.project.info },
       statistics: rec.statistics, // from GET /api/projects/{id} → statistics (verified on r6nvg8, 2026-11-20)
       data: dataFacts(rec.sessions, now, o), tasks, compute: computeFacts(rec.jobs, rec.rules, now, o),
-      pipeline: { ...pipelineFacts(rec.sessions, rec.jobs, rec.tasks, gearsExpected, rec.spec.readsPerSession), reads: !!tasks.used },
+      pipeline: { ...pipelineFacts(rec.sessions, rec.jobs, rec.tasks, gearsExpected, rec.spec.readsPerSession, rec.rules), reads: !!tasks.used },
     };
   }
 
@@ -2365,7 +2402,7 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
  * Built on the Flywheel Vision Design System React bundle (window.FlywheelVisionDesignSystem_6c883d). Read-only. */
 (function () {
   'use strict';
-  const BUILD = window.PSD_BUILD || { app: 'project-status', version: '0.4.3', mode: 'prototype', built: null };
+  const BUILD = window.PSD_BUILD || { app: 'project-status', version: '0.4.4', mode: 'prototype', built: null };
   const V = window.FlywheelVisionDesignSystem_6c883d;
   const { Button, IconButton, Typography, Tag, Tabs, Tab, TabPanel, Select, SelectItem, Table, PanelLayout, AlertPanel, ContextLayout, ProgressBar, Icon } = V;
   const PSD_LIVE = window.PSD_LIVE;
@@ -2493,6 +2530,24 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
             i % every === 0 ? h('text', { x: x0 + wd / 2, y: H - 6, textAnchor: 'middle', style: axisText }, fmtDay(d.day)) : null);
         })),
       h(Legend, { items: [['Complete', 'var(--slate-base)'], ['Failed', 'var(--red-base)']] }));
+  }
+
+  const FLOW_SEG = [['complete', 'Complete', 'var(--green-base)'], ['failed', 'Failed or cancelled', 'var(--red-base)'], ['running', 'Running or queued', 'var(--orange-base)']];
+  function RuleFlow({ flow }) {
+    if (!flow || !flow.length) return h('div', { className: 'psd-empty' }, 'No gear rules on this project.');
+    const stateTag = n => n.state === 'disabled' ? h(Tag, { size: 'small', color: 'orange', title: 'Rule disabled' })
+      : n.state === 'never_ran' ? h(Tag, { size: 'small', color: 'red', title: 'Never ran' }) : h(Tag, { size: 'small', color: 'slate', title: 'Rule enabled' });
+    return h('div', null,
+      h('div', { className: 'psd-flow' }, flow.map((n, i) => h(React.Fragment, { key: n.gear },
+        i > 0 && h('span', { className: 'psd-flow-arrow', 'aria-hidden': true }, h(Icon, { name: 'chevron-forward', size: 'small', color: 'light', decorative: true })),
+        h('div', { className: 'psd-flow-node' + (n.state === 'disabled' ? ' off' : '') + (n.state === 'never_ran' ? ' bad' : ''),
+          title: `${n.gear}\nRules: ${n.rules.join(', ')}\nComplete ${n.complete} · failed ${n.failed} · running ${n.running} · no job ${n.none} (of ${n.sessions} sessions)` + (n.order_min != null ? `\nTypically first runs ${fmtMin(n.order_min)} after a session's first job` : '') },
+          h('div', { className: 'psd-flow-head' }, h('code', null, n.gear), stateTag(n)),
+          h('div', { className: 'psd-flow-bar', role: 'img', 'aria-label': `${n.complete} of ${n.sessions} sessions complete` },
+            FLOW_SEG.map(([k, , col]) => n[k] ? h('span', { key: k, style: { width: `${(n[k] / Math.max(1, n.sessions)) * 100}%`, background: col } }) : null)),
+          h('div', { className: 'psd-flow-n' }, h('b', null, fmtNum(n.complete)), ` of ${fmtNum(n.sessions)} complete`),
+          h('div', { className: 'psd-flow-sub' }, [n.failed && `${fmtNum(n.failed)} failed`, n.running && `${fmtNum(n.running)} running`, n.none && `${fmtNum(n.none)} no job`].filter(Boolean).join(' · ') || 'All sessions complete'))))),
+      h(Legend, { items: [...FLOW_SEG.map(([, l, c]) => [l, c]), ['No job', 'var(--slate-hover)']] }));
   }
 
   function Pipeline({ steps, compact }) {
@@ -2701,7 +2756,8 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
         h(LensCard, { lens: 'compute', health: a.compute.health, active: persona === 'compute', onOpen: () => setTab('compute'), metrics: [
           ['Failure rate, 7 d', fmtPct(a.compute.rate), a.compute.health === 'act' ? 'act' : null], ['Jobs, 7 d', fmtNum(c.jobs_window)], ['Running / queued', `${fmtNum(c.running)} / ${fmtNum(c.pending_total)}`], ['Queue p95 wait', fmtMin(c.queue_p95_min), a.compute.queueSlow ? 'watch' : null]] })),
       h('div', { className: 'psd-grid two' },
-        h(Panel, { title: 'Session pipeline', sub: 'Where each session sits, from upload to final read', right: h(SrcMark, { src: 'snap' }) }, h(Pipeline, { steps: a.steps })),
+        h(Panel, { title: 'Session pipeline', sub: 'Where each session sits, from upload to final read', right: h(SrcMark, { src: 'snap' }) }, h(Pipeline, { steps: a.steps }),
+          f.pipeline.flow && f.pipeline.flow.length ? h('div', { className: 'psd-pipe-more' }, h(Button, { size: 'small', variant: 'ghost', endIcon: 'chevron-forward', onClick: () => setTab('compute') }, 'Rule flow')) : null),
         h(Panel, { title: 'Needs attention', sub: persona === 'all' ? 'Every lens, most severe first' : `${LENS[persona].persona} items` },
           h(Attention, { items: a.attention, persona, onGo: x => setTab(x.go) }))));
 
@@ -2794,6 +2850,7 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
         h(Kpi, { label: 'Queued', value: fmtNum(c.pending_total), sub: c.pending_total ? `p95 wait ${fmtMin(c.queue_p95_min)}` : null, tone: a.compute.queueSlow ? 'warn' : null, src: 'live' }),
         h(Kpi, { label: 'Median queue wait, 7 d', value: fmtMin(c.median_wait_min), src: 'snap' }),
         h(Kpi, { label: 'Compute time, 7 d', value: c.hours ? `${fmtNum(Math.round(c.hours))} h` : '—', sub: 'job run time (verify source)', src: 'snap' })),
+      h(Panel, { title: 'Rule flow', sub: 'Each gear rule, in the order gears usually run (approximate); bar = latest job of that gear on each session', wide: true, right: h(SrcMark, { src: 'snap' }) }, h(RuleFlow, { flow: f.pipeline.flow })),
       h('div', { className: 'psd-grid two' },
         h(Panel, { title: 'Finished jobs per day', sub: 'Last 14 days', right: h(SrcMark, { src: 'snap' }) }, h(DailyJobs, { days: c.daily })),
         h(Panel, { title: 'Queue', sub: 'Pending jobs, longest wait first', right: h(Tag, { color: a.compute.queueSlow ? 'orange' : 'slate', title: fmtNum(c.pending_total) }) },
