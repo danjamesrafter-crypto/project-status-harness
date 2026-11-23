@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
-<meta name="generator" content="project-status/0.4.1">
+<meta name="generator" content="project-status/0.4.2">
 <title>Project Status</title>
 <!-- Icon font: Flywheel-Vision-Icons.woff from @flywheel-io/vision 22.1.2 (npm), inlined as a data: URI -->
 <style>
@@ -1346,11 +1346,12 @@ html.fw-embedded:not(.fw-own-close) .psd-top { padding-right: calc(16px + 48px);
 .psd-mini em { font-style: normal; margin-left: auto; font-variant-numeric: tabular-nums; }
 
 /* health dots: shape + label, never colour alone */
-.h-act, .h-watch, .h-ok, .h-na { display: inline-block; width: 10px; height: 10px; flex-shrink: 0; }
+.h-act, .h-watch, .h-ok, .h-na, .h-off { display: inline-block; width: 10px; height: 10px; flex-shrink: 0; }
 .h-act { background: var(--red-base); border-radius: 2px; }
 .h-watch { background: var(--orange-base); border-radius: 50% 50% 2px 2px; }
 .h-ok { background: var(--green-base); border-radius: 50%; }
-.h-na { background: var(--slate-border); border-radius: 50%; }
+.h-na, .h-off { background: var(--slate-border); border-radius: 50%; }
+.h-off { border-radius: 2px; }
 .psd-lensdot { display: inline-flex; align-items: center; gap: 6px; border: 0; background: transparent; padding: 4px 6px; margin: -4px -6px; border-radius: 4px; font: inherit; font-size: 12px; color: var(--typography-muted); cursor: pointer; }
 .psd-lensdot:hover { background: var(--primary-hover); color: var(--typography-base); }
 
@@ -1464,7 +1465,7 @@ html.fw-embedded:not(.fw-own-close) .psd-info-head { padding-right: calc(12px + 
 <body>
 <img id="fw-mark" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0iI2ZmZmZmZiI+PHBhdGggZD0iTTI1LjI3MiAyLjUzOGMtMC4wNDEtMC4xMDUtMC4xMDMtMC4yLTAuMTgxLTAuMjgxcy0wLjE3MS0wLjE0NS0wLjI3My0wLjE4OWMtMC4xMDItMC4wNDQtMC4yMTItMC4wNjgtMC4zMjQtMC4wNjlzLTAuMjIyIDAuMDIwLTAuMzI1IDAuMDYybC0xNi45NzEgNi45MTdjLTAuMTU0IDAuMDYzLTAuMjg3IDAuMTcxLTAuMzgyIDAuMzFzLTAuMTQ3IDAuMzAzLTAuMTUgMC40NzJ2NS4yNjRjMCAwLjExIDAuMDIxIDAuMjE4IDAuMDYxIDAuMzIgMC4wNDAgMC4xMDYgMC4xMDEgMC4yMDIgMC4xNzkgMC4yODRzMC4xNyAwLjE0NyAwLjI3MyAwLjE5M2MwLjEwMyAwLjA0NSAwLjIxMyAwLjA3MCAwLjMyNSAwLjA3MnMwLjIyMy0wLjAxOSAwLjMyNy0wLjA2MGwxNi45NzEtNi45MTdjMC4xNTgtMC4wNjIgMC4yOTUtMC4xNzEgMC4zOTItMC4zMTJzMC4xNDktMC4zMDkgMC4xNTEtMC40ODF2LTUuMjY0Yy0wLjAwNC0wLjExLTAuMDI4LTAuMjE5LTAuMDcyLTAuMzJ6TTIxLjc5NSAxMi4xMDJsLTE0LjU5MyA1Ljg3NmMtMC4xNTggMC4wNjQtMC4yOTMgMC4xNzUtMC4zODkgMC4zMTdzLTAuMTQ2IDAuMzExLTAuMTQ2IDAuNDg0djYuOTE3YzAgMC4xNjkgMC4wNDkgMC4zMzMgMC4xNDEgMC40NzRzMC4yMjMgMC4yNSAwLjM3NiAwLjMxNmw0LjkxNCAyLjExOWMwLjEwNSAwLjA0NCAwLjIxNyAwLjA2NiAwLjMzIDAuMDY2IDAuMTExIDAuMDAxIDAuMjIyLTAuMDIxIDAuMzI1LTAuMDY0czAuMTk3LTAuMTA2IDAuMjc1LTAuMTg2IDAuMTQxLTAuMTc1IDAuMTg0LTAuMjc5YzAuMDQyLTAuMTA0IDAuMDY0LTAuMjE2IDAuMDY0LTAuMzI5di00LjYwMmMwLjAwMS0wLjE3MyAwLjA1My0wLjM0MSAwLjE0OS0wLjQ4NHMwLjIzMi0wLjI1MyAwLjM5LTAuMzE3bDguNjItMy40NGMwLjE1OC0wLjA2NCAwLjI5NC0wLjE3NCAwLjM5LTAuMzE3czAuMTQ4LTAuMzExIDAuMTQ5LTAuNDg0di01LjI0NmMwLTAuMTA5LTAuMDIxLTAuMjE2LTAuMDYxLTAuMzE3LTAuMDM5LTAuMTA5LTAuMDk5LTAuMjA4LTAuMTc3LTAuMjkzcy0wLjE3Mi0wLjE1Mi0wLjI3Ni0wLjE5OWMtMC4xMDQtMC4wNDctMC4yMTctMC4wNzItMC4zMzEtMC4wNzRzLTAuMjI3IDAuMDIwLTAuMzMzIDAuMDY0eiIvPjwvc3ZnPg==" alt="" hidden>
 <div id="root"></div>
-<script>window.PSD_BUILD = {"app": "project-status", "version": "0.4.1 (92b6710)", "mode": "prototype", "built": "2026-11-23 18:13 UTC"};</script>
+<script>window.PSD_BUILD = {"app": "project-status", "version": "0.4.2 (53df26c)", "mode": "prototype", "built": "2026-11-23 18:16 UTC"};</script>
 <script>/* @flywheel-io/extension 0.14.9 (MIT; npm build bundled to IIFE, includes rxjs 6.6.7 Apache-2.0). Inlined: cdn.flywheel.io does not serve it cross-origin to GitHub Pages. */
 var Flywheel=(()=>{var _n=Object.create;var we=Object.defineProperty;var bn=Object.getOwnPropertyDescriptor;var yn=Object.getOwnPropertyNames;var vn=Object.getPrototypeOf,mn=Object.prototype.hasOwnProperty;var s=(t,e)=>()=>(e||t((e={exports:{}}).exports,e),e.exports);var ie=(t,e,r,n)=>{if(e&&typeof e=="object"||typeof e=="function")for(let i of yn(e))!mn.call(t,i)&&i!==r&&we(t,i,{get:()=>e[i],enumerable:!(n=bn(e,i))||n.enumerable});return t},ge=(t,e,r)=>(ie(t,e,"default"),r&&ie(r,e,"default")),On=(t,e,r)=>(r=t!=null?_n(vn(t)):{},ie(e||!t||!t.__esModule?we(r,"default",{value:t,enumerable:!0}):r,t)),wn=t=>ie(we({},"__esModule",{value:!0}),t);var oe=s(Se=>{"use strict";Object.defineProperty(Se,"__esModule",{value:!0});function gn(t){return typeof t=="function"}Se.isFunction=gn});var se=s(je=>{"use strict";Object.defineProperty(je,"__esModule",{value:!0});var Ee=!1;je.config={Promise:void 0,set useDeprecatedSynchronousErrorHandling(t){if(t){var e=new Error;console.warn(`DEPRECATED! RxJS was set to use deprecated synchronous error handling behavior by code at: 
 `+e.stack)}else Ee&&console.log("RxJS: Back to a better error behavior. Thank you. <3");Ee=t},get useDeprecatedSynchronousErrorHandling(){return Ee}}});var ue=s(qe=>{"use strict";Object.defineProperty(qe,"__esModule",{value:!0});function Sn(t){setTimeout(function(){throw t},0)}qe.hostReportError=Sn});var Pe=s(xe=>{"use strict";Object.defineProperty(xe,"__esModule",{value:!0});var En=se(),jn=ue();xe.empty={closed:!0,next:function(t){},error:function(t){if(En.config.useDeprecatedSynchronousErrorHandling)throw t;jn.hostReportError(t)},complete:function(){}}});var Me=s(Ie=>{"use strict";Object.defineProperty(Ie,"__esModule",{value:!0});Ie.isArray=function(){return Array.isArray||function(t){return t&&typeof t.length=="number"}}()});var Ae=s(Te=>{"use strict";Object.defineProperty(Te,"__esModule",{value:!0});function qn(t){return t!==null&&typeof t=="object"}Te.isObject=qn});var Wr=s(Re=>{"use strict";Object.defineProperty(Re,"__esModule",{value:!0});var xn=function(){function t(e){return Error.call(this),this.message=e?e.length+` errors occurred during unsubscription:
@@ -2240,7 +2241,7 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
       satisfies_template: s.satisfies_template, // undefined when the server does not send it → counted as satisfied; flagged in notes
       info: { site: pick(s, o.siteField) || pick(s, 'info.site') || '—', visit: pick(s, o.visitField) || s.label } };
   }
-  function normJob(j, gearsById) {
+  function normJob(j, gearsById, acqToSession) {
     const gi = j.gear_info || {};
     const g = gi.name ? gi : gearsById.get(j.gear_id) || {};
     const pr = j.profile || {};
@@ -2249,9 +2250,14 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
     const pi = j.parent_info || {};
     const idOf = v => (v && typeof v === 'object' ? v._id || v.id : v) || null;
     const dest = j.destination || {};
-    const parents = j.parents || { project: idOf(pi.project), subject: idOf(pi.subject), session: idOf(pi.session) || (dest.type === 'session' ? dest.id : null), acquisition: idOf(pi.acquisition) || (dest.type === 'acquisition' ? dest.id : null) };
+    const acq = idOf(pi.acquisition) || (dest.type === 'acquisition' ? dest.id : null);
+    const parents = j.parents || { project: idOf(pi.project), subject: idOf(pi.subject),
+      session: idOf(pi.session) || (dest.type === 'session' ? dest.id : null) || (acq && acqToSession.get(acq)) || null, acquisition: acq };
+    // No transitions on the list (r6nvg8, 2026-11-23): use modified as the finish time for finished jobs.
+    const tr = { ...(j.transitions || {}) };
+    if ((j.state === 'complete' || j.state === 'failed' || j.state === 'cancelled') && !tr[j.state]) tr[j.state] = j.modified;
     return { id: j.id || j._id, gear_info: { name: g.name || gi.name || j.gear_id || 'unknown', version: g.version || gi.version || '' },
-      state: j.state, created: j.created, transitions: j.transitions || {},
+      state: j.state, created: j.created, transitions: tr,
       profile: { elapsed_time_ms: pr.elapsed_time_ms || pr.total_time_ms || null },
       failure_reason: j.failure_reason || (j.state === 'failed' ? null : undefined),
       origin: j.origin || { type: 'unknown', id: null }, parents };
@@ -2266,15 +2272,18 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
     if ((stats.sessions || 0) > o.maxSessions || (stats.jobs || 0) > o.maxJobs) {
       return { tooBig: `${(stats.sessions || 0).toLocaleString()} sessions / ${(stats.jobs || 0).toLocaleString()} jobs is above the browser limit (${o.maxSessions.toLocaleString()} / ${o.maxJobs.toLocaleString()}). Needs the snapshot gear.`, notes };
     }
-    const [sessionsRes, jobsRes, rulesRes, tasksRes] = await Promise.allSettled([
+    const [sessionsRes, jobsRes, rulesRes, tasksRes, acqRes] = await Promise.allSettled([
       api(`/api/projects/${pid}/sessions`),
       loadJobs(api, pid, note, o.maxJobs),
       api(`/api/projects/${pid}/rules`),
       loadTasks(api, pid, note),
+      api(`/api/projects/${pid}/acquisitions`).catch(() => api('/api/acquisitions', { filter: `parents.project=${pid}`, limit: 5000 })),
     ]);
     const unavailable = {};
+    const acqs = acqRes.status === 'fulfilled' ? rows(acqRes.value) : (note(`Acquisitions: ${acqRes.reason && acqRes.reason.message}; acquisition-level jobs can't be tied to sessions.`), []);
+    const acqToSession = new Map(acqs.map(a => [a._id || a.id, (a.parents && a.parents.session) || a.session || null]));
     const sessions = sessionsRes.status === 'fulfilled' ? rows(sessionsRes.value).map(s => normSession(s, o)) : (unavailable.data = `Sessions: ${sessionsRes.reason && sessionsRes.reason.message}`, []);
-    const jobs = jobsRes.status === 'fulfilled' ? jobsRes.value.map(j => normJob(j, ctx.gearsById)) : (unavailable.compute = `Jobs: ${jobsRes.reason && jobsRes.reason.message}`, []);
+    const jobs = jobsRes.status === 'fulfilled' ? jobsRes.value.map(j => normJob(j, ctx.gearsById, acqToSession)) : (unavailable.compute = `Jobs: ${jobsRes.reason && jobsRes.reason.message}`, []);
     const rules = rulesRes.status === 'fulfilled' ? rows(rulesRes.value).map(r => ({ _id: r._id, name: r.name || 'Gear rule', disabled: !!r.disabled,
       _gear: (ctx.gearsById.get(r.gear_id) || {}).name || r.gear_id || 'unknown' })) : (note(`Gear rules: ${rulesRes.reason && rulesRes.reason.message}`), []);
     const tasks = tasksRes.status === 'fulfilled' ? tasksRes.value : (note(`Reader tasks: ${tasksRes.reason && tasksRes.reason.message}`), []);
@@ -2285,7 +2294,9 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
         tier: (project.info && project.info.tier) || '—', criteria: (project.info && project.info.criteria) || '—', group: project.group } },
       statistics: stats, sessions, jobs, rules, tasks,
       spec: { readsPerSession: tasked ? Math.round(primary.length / tasked) : 0 } };
-    if (stats.sessions != null && stats.jobs == null) rec.statistics = { ...stats, jobs: jobs.length };
+    if (stats.sessions != null && stats.jobs == null) rec.statistics = { ...stats, jobs: jobs.length, acquisitions: acqs.length || null };
+    const unmapped = jobs.filter(j => !j.parents.session).length;
+    if (unmapped) note(`Jobs: ${unmapped} of ${jobs.length} could not be tied to a session (destination type: ${[...new Set(jobsRes.status === 'fulfilled' ? jobsRes.value.filter(j => !(j.destination && j.destination.type === 'session') ).map(j => (j.destination || {}).type) : [])].join(', ') || 'n/a'}).`);
     if (stats.sessions == null) { rec.statistics = { subjects: new Set(sessions.map(x => x.subject._id)).size, sessions: sessions.length, acquisitions: null, acquisition_files: null, analyses: null, jobs: jobs.length }; note('Project statistics not returned; totals counted from loaded records.'); }
     const facts = window.PSD.buildFacts(rec, ctx.now, o);
     facts.live = window.PSD_LIVE_DELTA(rec, ctx.openedAt, Date.now());
@@ -2344,7 +2355,7 @@ ${ye.map(e=>`.fw-tab-active.fw-tab-${e}{border-bottom-color:var(--${e}-base)}.fw
  * Built on the Flywheel Vision Design System React bundle (window.FlywheelVisionDesignSystem_6c883d). Read-only. */
 (function () {
   'use strict';
-  const BUILD = window.PSD_BUILD || { app: 'project-status', version: '0.4.1', mode: 'prototype', built: null };
+  const BUILD = window.PSD_BUILD || { app: 'project-status', version: '0.4.2', mode: 'prototype', built: null };
   const V = window.FlywheelVisionDesignSystem_6c883d;
   const { Button, IconButton, Typography, Tag, Tabs, Tab, TabPanel, Select, SelectItem, Table, PanelLayout, AlertPanel, ContextLayout, ProgressBar, Icon } = V;
   const PSD_LIVE = window.PSD_LIVE;
